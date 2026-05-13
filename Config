@@ -1,0 +1,128 @@
+Below are the transcribed notes from the provided images, organized by page.
+
+### **Page 1 (IMG_4005.jpg)**
+
+**RDP Licensing Configuration (GPO)**
+
+* Computer Management / Admin Template / Windows Component / Remote Desktop Services / RDSH / Licensing
+
+**RDITA Path**
+
+* HKLM \ Software \ Policies \ Microsoft \ Windows NT \ Printers \ Point and Print
+
+**List of all printers installed**
+
+* HKCU \ Software \ Microsoft \ Windows NT \ Current Version \ Devices
+* HKLM \ System \ CurrentControlSet \ Control \ Print
+
+**Type 3 driver Folder location**
+
+* C:\ Windows \ System32 \ Spool \ Drivers \ x64 \ 3
+
+**Type 4 driver Folder Path**
+
+* C:\ Windows \ System32 \ Spool \ Drivers \ x64 \ 4
+
+**Default Namespace**
+
+* Root \ Default
+* Root \ CIMV2
+
+**To allow all accounts in the administrator for WinRM**
+
+* HKLM \ Software \ Microsoft \ Windows \ CurrentVersion \ Policies \ System
+* LocalAccountTokenFilterPolicy = 1
+
+
+
+---
+
+### **Page 2 (IMG_4006.jpg)**
+
+**Commands**
+
+* **To Configure WINRM with default Settings:** Winrm quickconfig / Winrm qc
+* **To Enumerate WinRM Listner:** WinRM Enumerate winRM/config/listener
+* **To check WinRM Configuration:** Winrm get winrm/config
+* **To set authentication / change authentication:** Winrm set winrm/config/client/auth @{Digest="False"}
+* **To use WinRM remotely:** Winrm e winrm/config/listener -r:{Hostname}
+* **WinRS example Command:** WinRS -r:{Hostname} ipconfig
+
+**User policy for MSI**
+
+* HKCU \ Software \ Policies \ Microsoft \ Windows \ installer
+
+**Computer Policy for MSI**
+
+* HKLM \ Software \ Policies \ Microsoft \ Windows \ installer
+
+**Disable Clipboard in RDP**
+
+* fdisableclip = 1 (Uncheck) and 0 (Checked)
+* **Path:** HKLM \ System \ CurrentControlSet \ Control \ TerminalServer
+* **GPO:** Computer Config -> Policies -> Windows Settings -> Security Settings -> Local Policies -> User rights Management
+
+**Enable / Disable from GPO**
+
+* Administrative Templates -> Windows Components -> Remote Desktop Services -> Remote Desktop Session Host -> Devices and Resource redirection
+* "Do not allow Clipboard Redirection" (Enable)
+
+
+
+---
+
+### **Page 3 (IMG_4007.jpg)**
+
+**Fslogix installation Path:**
+
+* C:\ Program Files \ Fslogix \ apps
+
+**Registry path for profile (Fslogix)**
+
+* HKLM \ Software \ Fslogix \ Profile
+
+**Registry path for ODFC (Fslogix)**
+
+* HKLM \ Software \ Policies \ Fslogix \ ODFC
+
+**Event Log for Fslogix**
+
+* Application & Security Logs > Microsoft > Fslogix > Apps > Operational
+* Application & Security Logs > Microsoft > Fslogix > CloudCache > Operational
+
+**Registry to enable Logging:**
+
+* HKLM \ Software \ Fslogix \ Logging
+
+**Logs for Profile Containers:**
+
+* %Programdata% \ FsLogix \ Logs \ Profile
+
+**Logs for ODFC Containers:**
+
+* %Programdata% \ FsLogix \ Logs \ ODFC
+
+**Logs for Rule Compilation**
+
+* %Programdata% \ Fslogix \ Logs \ Rule Compilation
+
+**Logs for Fslogix Service:**
+
+* %Programdata% \ Fslogix \ Logs \ Service
+
+**Group Policy Template for FsLogix**
+
+* Fslogix.admx -> %Sysvol% \ Policy Definition
+* Fslogix.adml -> %Sysvol% \ Policy Definition \ En-US
+
+**AppRule Rules and assignment files:**
+
+* %Programfiles% \ Fslogix \ Apps \ Rules
+
+**To check the machine is AD-Joined (Hybrid) or Entra-Joined**
+
+* dsregcmd /status
+
+**To check 3389 port connectivity of a machine remotely**
+
+* tnc -Computername machine1 -port 3389
